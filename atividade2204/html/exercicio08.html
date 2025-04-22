@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Validador de CPF</title>
+  <script defer>
+    function validarCPF() {
+      const cpf = document.getElementById('cpf').value.replace(/\D/g, '');
+
+      if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
+        document.getElementById('resultado').textContent = 'CPF inválido';
+        return;
+      }
+
+      const validarDigito = (cpf, fator) => {
+        let total = 0;
+        for (let i = 0; i < fator - 1; i++) {
+          total += parseInt(cpf[i]) * (fator - i);
+        }
+        let resto = (total * 10) % 11;
+        return resto === 10 ? 0 : resto;
+      };
+
+      const digito1 = validarDigito(cpf, 10);
+      const digito2 = validarDigito(cpf, 11);
+
+      if (digito1 == cpf[9] && digito2 == cpf[10]) {
+        document.getElementById('resultado').textContent = 'CPF válido';
+      } else {
+        document.getElementById('resultado').textContent = 'CPF inválido';
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Validador de CPF</h2>
+  <input type="text" id="cpf" placeholder="Digite o CPF">
+  <button onclick="validarCPF()">Validar</button>
+  <p id="resultado"></p>
+</body>
+</html>

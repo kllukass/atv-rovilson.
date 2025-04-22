@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo de Adivinhação</title>
+  <script defer>
+    let numeroSecreto = Math.floor(Math.random() * 10) + 1;
+
+    function tentarAdivinhar() {
+      const palpite = parseInt(document.getElementById('palpite').value);
+      let mensagem = '';
+      if (palpite === numeroSecreto) {
+        mensagem = 'Parabéns! Você acertou!';
+      } else if (palpite < numeroSecreto) {
+        mensagem = 'Tente um número maior.';
+      } else {
+        mensagem = 'Tente um número menor.';
+      }
+      document.getElementById('resultado').textContent = mensagem;
+    }
+  </script>
+</head>
+<body>
+  <h2>Adivinhe o número (1 a 10)</h2>
+  <input type="number" id="palpite">
+  <button onclick="tentarAdivinhar()">Adivinhar</button>
+  <p id="resultado"></p>
+</body>
+</html>

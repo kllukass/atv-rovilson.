@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversão de Horas</title>
+  <script defer>
+    function converterHoras() {
+      const horas = parseFloat(document.getElementById('horas').value);
+      const minutos = horas * 60;
+      const segundos = horas * 3600;
+      document.getElementById('resultado').textContent = 
+        `${horas} hora(s) = ${minutos} minutos = ${segundos} segundos`;
+    }
+  </script>
+</head>
+<body>
+  <h2>Conversor de Horas</h2>
+  <input type="number" id="horas" step="0.1">
+  <button onclick="converterHoras()">Converter</button>
+  <p id="resultado"></p>
+</body>
+</html>

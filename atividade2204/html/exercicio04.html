@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Soma dos Pares</title>
+  <script defer>
+    function somarPares() {
+      const limite = parseInt(document.getElementById('limite').value);
+      let soma = 0;
+      for (let i = 1; i <= limite; i++) {
+        if (i % 2 === 0) soma += i;
+      }
+      document.getElementById('resultado').textContent = `Soma dos pares: ${soma}`;
+    }
+  </script>
+</head>
+<body>
+  <h2>Soma dos Pares até N</h2>
+  <input type="number" id="limite">
+  <button onclick="somarPares()">Calcular</button>
+  <p id="resultado"></p>
+</body>
+</html>
